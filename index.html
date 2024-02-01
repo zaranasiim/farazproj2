@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        .custom-file-label::after {
+            content: "Browse";
+        }
+        .spinner-border {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Image Classification</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+            <div class="custom-file mb-3">
+                <input type="file" class="custom-file-input" id="customFile" name="file" accept="image/*" required>
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <span>Upload and Classify</span>
+                <span class="spinner-border spinner-border-sm ml-2" role="status" aria-hidden="true"></span>
+            </button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Show loading spinner on form submission
+        $('#uploadForm').submit(function() {
+            $('.spinner-border').css('display', 'inline-block');
+            $('button').attr('disabled', true);
+        });
+    </script>
+</body>
+</html>
